@@ -29,7 +29,7 @@ public protocol NetRequestProtocol {
 }
 
 // MARK: - Default values for NetRequestProtocol
-extension NetRequestProtocol {
+public extension NetRequestProtocol {
     var addAuthorizationToken: Bool {
       false
     }
