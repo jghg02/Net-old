@@ -14,11 +14,11 @@ public protocol NetManagerProtocol {
 public class NetManager: NetManagerProtocol {
     private let urlSession: URLSession
     
-    init(urlSession: URLSession = URLSession.shared) {
+    public init(urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession
     }
     
-    func initRequest(with data: NetRequestProtocol, authToken: String = "") async throws -> Data {
+    public func initRequest(with data: NetRequestProtocol, authToken: String = "") async throws -> Data {
         let (data, response) = try await urlSession.data(for: data.netRequest(authToken: authToken))
         guard let httpResponse = response as? HTTPURLResponse,
               httpResponse.statusCode == 200 else { throw NetworkError.invalidServerResponse }
