@@ -11,7 +11,7 @@ public protocol NetManagerProtocol {
     func initRequest(with data: NetRequestProtocol, authToken: String) async throws -> Data
 }
 
-class NetManager: NetManagerProtocol {
+public class NetManager: NetManagerProtocol {
     private let urlSession: URLSession
     
     init(urlSession: URLSession = URLSession.shared) {
