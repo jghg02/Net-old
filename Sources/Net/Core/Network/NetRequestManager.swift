@@ -21,7 +21,7 @@ public class NetRequestManager: NetRequestManagerProtocol {
         self.netManager = netManager
     }
     
-    public func initRequest<T>(with data: NetRequestProtocol) async throws -> T where T : Decodable {
+    public func initRequest<T: Decodable>(with data: NetRequestProtocol) async throws -> T {
         let data = try await netManager.initRequest(with: data, authToken: "")
         let decoded: T = try parser.parse(data: data)
         return decoded
