@@ -10,7 +10,7 @@ import Foundation
 public protocol NetRequestManagerProtocol {
     var netManager: NetManagerProtocol { get }
     var parser: NetDataParserProtocol { get }
-    func initRequest<N: Decodable>(with data: NetRequestProtocol) async throws -> N
+    func initRequest<T: Decodable>(with data: NetRequestProtocol) async throws -> T
 }
 
 public class NetRequestManager: NetRequestManagerProtocol {
@@ -21,9 +21,9 @@ public class NetRequestManager: NetRequestManagerProtocol {
         self.netManager = netManager
     }
     
-    public func initRequest<N>(with data: NetRequestProtocol) async throws -> N where N : Decodable {
+    public func initRequest<T>(with data: NetRequestProtocol) async throws -> T where T : Decodable {
         let data = try await netManager.initRequest(with: data, authToken: "")
-        let decoded: N = try parser.parse(data: data)
+        let decoded: T = try parser.parse(data: data)
         return decoded
     }
     
