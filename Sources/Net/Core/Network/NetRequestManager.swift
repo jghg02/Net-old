@@ -17,7 +17,7 @@ public class NetRequestManager: NetRequestManagerProtocol {
     public let netManager: NetManagerProtocol
     
     
-    init(netManager: NetManagerProtocol = NetManager()) {
+    public init(netManager: NetManagerProtocol = NetManager()) {
         self.netManager = netManager
     }
     
