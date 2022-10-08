@@ -48,7 +48,7 @@ public extension NetRequestProtocol {
     
     func netRequest(authToken: String) throws -> URLRequest {
         var components = URLComponents()
-//        components.scheme = "https"
+        components.scheme = "https"
         components.host = host
         components.path = path
         
